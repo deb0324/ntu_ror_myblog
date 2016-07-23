@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
   end
   
   def require_author
-    binding.pry
     redirect_to login_path unless current_user.author?(params[:id])
   end
 end

@@ -17,21 +17,27 @@ class PostsController < ApplicationController
   end
 
   def create
-    #binding.pry
-    post = Post.new(post_params)
+    post = Post.create(title: params[:title], content: params[:content])
     post.user = current_user
 
     # Category logic
-    #all_cat = Category.all.pluck(:title)
-    #user_cat = post_params[:categories].split(",")
+    all_cat = Category.all.pluck(:title)
+    user_cat = params[:categories].split(",")
 
-    #(all_cat & user_cat).each do |cat|
-    # post.categories << Category.create(title: cat)
-    #end
+    #trim any white spaces
+    user_cat.each do |cat|
+      cat.strip!
+    end
 
-    #(all_cat - user_cat).each do |cat|
-    #  post.categories << Category.find_by_title(cat)
-    #end
+    # existing categories
+    (all_cat & user_cat).each do |cat|
+      post.categories << Category.find_by_title(cat)
+    end
+
+    # new categories
+    (user_cat - all_cat).each do |cat|
+      post.categories << Category.create(title: cat)
+    end
     ##
     
     if post.save!
@@ -55,7 +61,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    binding.pry
     #delete post
     @post = Post.find(params[:id]) # TODO: why format? how to get id?
     @post.destroy
@@ -71,6 +76,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, categories_id: [])
+    params.require(:post).permit(:title, :content, :categories)
   end
 end
