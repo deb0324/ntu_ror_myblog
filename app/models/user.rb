@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
     self == Post.find(id).user
   end
 
-  #validates :name, presence: true
+  #validates :username, :nickname, presence: true
   #validates :name, length: { minimum: 2 }
   #validates :name, length: { maximum: 10 }
 

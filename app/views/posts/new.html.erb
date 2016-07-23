@@ -3,22 +3,22 @@
 <div class="well col-md-12" role="form" style="width: 700px;">
 
   <%= form_tag @post do |f| %>
-  <div class="form-group">
-    <label>Title</label>
-    <%= text_field_tag :title, params[:title], :placeholder => "title", class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <label>Title</label>
+      <%= text_field_tag :title, params[:title], :placeholder => "title", class: "form-control" %>
+    </div>
 
-  <div class="form-group">
-    <label>Content</label>
-    <%= text_area_tag :content, params[:content], :placeholder => "content", class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <label>Content</label>
+      <%= text_area_tag :content, params[:content], :placeholder => "content", class: "form-control" %>
+    </div>
 
-  <div class="form-group">
-    <label>Category</label>
-    <small><p>Eg. Fun, Tech, Cool (separate with comma)</p></small>
-    <%= text_field_tag :categories, params[:categories], :placeholder => "categories", class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <label>Category</label>
+      <small><p>Eg. Fun, Tech, Cool (separate with comma)</p></small>
+      <%= text_field_tag :categories, params[:categories], :placeholder => "categories", class: "form-control" %>
+    </div>
 
-  <%= submit_tag(@post.new_record? ? 'Create Post' : 'Update Post', class: 'btn btn-primary') %>
+    <%= submit_tag "New Post", class: 'btn btn-primary' %>
   <% end %>
 </div>
