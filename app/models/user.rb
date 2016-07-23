@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def author?(id)
-    #binding.pry
     self == Post.find(id).user
   end
 

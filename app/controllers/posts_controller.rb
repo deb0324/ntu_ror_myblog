@@ -22,16 +22,16 @@ class PostsController < ApplicationController
     post.user = current_user
 
     # Category logic
-    all_cat = Category.all.pluck(:title)
-    user_cat = post_params[:categories].split(",")
+    #all_cat = Category.all.pluck(:title)
+    #user_cat = post_params[:categories].split(",")
 
-    (all_cat & user_cat).each do |cat|
-      post.categories << Category.create(title: cat)
-    end
+    #(all_cat & user_cat).each do |cat|
+    # post.categories << Category.create(title: cat)
+    #end
 
-    (all_cat - user_cat).each do |cat|
-      post.categories << Category.find_by_title(cat)
-    end
+    #(all_cat - user_cat).each do |cat|
+    #  post.categories << Category.find_by_title(cat)
+    #end
     ##
     
     if post.save!
@@ -55,9 +55,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    #binding.pry
+    binding.pry
     #delete post
-    @post = Post.find(params[:format]) # TODO: why format? how to get id?
+    @post = Post.find(params[:id]) # TODO: why format? how to get id?
     @post.destroy
 
     #delete all comments associated with post
@@ -71,6 +71,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :categories)
+    params.require(:post).permit(:title, :content, categories_id: [])
   end
 end

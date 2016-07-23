@@ -15,14 +15,14 @@
       <%= f.text_area :content, rows: 5, :placeholder => "content", class: "form-control" %>
 
     </div>
-
+<!--
     <div class="form-group">
       <%= f.label :categories %>
       <%= f.text_field :categories, :placeholder => "categories", class: "form-control" %>
 
     </div>
-
-<!-- for checkbox category
+-->
+<!-- for checkbox category -->
     <div class="form-group">
       <%= f.label :categories %>
       <br>
@@ -31,7 +31,7 @@
       <% end %>
 
     </div>
--->
+
   <br>
     <%= f.submit(@post.new_record? ? 'Create Post' : 'Update Post', class: 'btn btn-primary') %>
   <% end %>

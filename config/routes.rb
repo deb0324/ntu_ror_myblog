@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   get '/logout' => 'sessions#destroy' #TODO: why not delete??
   
-  get '/delete' => 'posts#destroy'
+  #get '/delete' => 'posts#destroy'
 
   #get '/index' => 'posts#index'
 
