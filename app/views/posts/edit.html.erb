@@ -1,0 +1,18 @@
+<%= render 'shared/title', title: "Edit Post" %>
+
+<div class="well col-md-12" role="form" style="width: 700px;">
+  <%= form_for(@post) do |f| %>
+
+  <div class="form-group">
+    <label>Title</label>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Content</label>
+    <%= f.text_area :content, rows: 5, class: "form-control" %>
+  </div>
+
+   <%= f.submit class: 'btn btn-primary' %>
+   <% end %>
+</div>

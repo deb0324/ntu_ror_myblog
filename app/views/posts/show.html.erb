@@ -1,0 +1,21 @@
+<%= render 'shared/title', title: @post.title %>
+<div>
+    <%= render 'post', post: @post, show: true %>
+</div>
+<div>
+  <% @post.comments.each do |comment|%>
+    <%= render 'comments/comment', comment: comment %>
+  <% end %>
+</div>
+
+<div class="col-md-7 well" >
+  <% if !current_user %>
+    <p><small>please log in to comment</small></p>
+  <% else %>
+    <!-- TODO: how this form_for works? -->
+    <%= form_for [@post, @comment] do |f| %>
+      <p><%= f.text_area :content %></p>
+      <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
+</div>

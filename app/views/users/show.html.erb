@@ -1,0 +1,7 @@
+<%= render 'shared/title', title: current_user.nickname %>
+
+<div>
+  <% @user.posts.reverse.each do |post| %>
+    <%= render 'posts/post', post: post, show: false %>
+  <% end %>
+</div>

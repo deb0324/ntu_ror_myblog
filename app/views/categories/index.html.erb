@@ -1,0 +1,20 @@
+<%= render 'shared/title', title: 'All Category'%>
+
+
+<div class="btn btn-primary">
+<%= link_to 'new category', new_category_path, { :style=>'color: white; font-size: 16px', :class => "css_class"} %>
+</div>
+
+<div>
+<br> <!-- TODO: Fix this -->
+</div>
+
+<div>
+  <% @categories.reverse.each do |category| %>
+  <div class="row">
+    <div class="well col-md-6">
+      <h5><%= link_to category.title, category_path(category) %> <span style="float:right;"><%= category.posts.size %> posts</span></h5>
+    </div>
+  </div>
+  <% end %>
+</div>

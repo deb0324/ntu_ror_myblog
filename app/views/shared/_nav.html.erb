@@ -1,0 +1,52 @@
+<html>
+<head>
+  <title>test</title>
+  <meta charset="utf-8">
+  <style>
+    .nav {
+      height: 50px;
+      background: #383838;
+    }
+
+    .nav-list {
+      list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .nav-item {
+      float: left;
+      display: block;
+      padding: 16px;
+      width: 150px;
+      border-right: 1px solid white;
+      text-align: center;
+    }
+
+    
+    .nav-item:hover {
+      background: #707070;
+    }
+  </style>
+</head>
+<body>
+   <div class="nav">
+    <ul class="nav-list">
+
+      <li class="nav-item" style="color: red;">Home</li>
+
+      <li class="nav-item"><%= link_to 'Posts', posts_path, {:style=>'color: white;'}  %></li>
+
+      <li class="nav-item"><%= link_to 'Categories', categories_path, {:style=>'color: white;'} %></li>
+    
+      <% if current_user %>
+        <li class="nav-item" style="border-right: none; float:right;"><%= link_to 'Sign out', logout_path, {:style=>'color: white;'} %></li>
+      <% else %>
+        <li class="nav-item" style="border-right: none; float:right;"><%= link_to 'Sign in', new_session_path, {:style=>'color: white;'} %>
+      <% end %>
+    </ul>
+  </div>
+  <hr style = "color: grey">
+</body>
+</html>

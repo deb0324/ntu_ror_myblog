@@ -1,0 +1,38 @@
+<%= render 'shared/title', title: 'New Post'%>
+
+<div class="well col-md-12" role="form" style="width: 700px;">
+  <%= form_for @post do |f| %>
+
+
+    <div class="form-group">
+      <label>Title</label>
+      <%= f.text_field :title, :placeholder => "title", class: "form-control" %>
+    </div>
+
+
+    <div class="form-group">
+      <label>Content</label>
+      <%= f.text_area :content, rows: 5, :placeholder => "content", class: "form-control" %>
+
+    </div>
+
+    <div class="form-group">
+      <%= f.label :categories %>
+      <%= f.text_field :categories, :placeholder => "categories", class: "form-control" %>
+
+    </div>
+
+<!-- for checkbox category
+    <div class="form-group">
+      <%= f.label :categories %>
+      <br>
+      <%= collection_check_boxes(:post, :category_ids, Category.all, :id, :title) do |cbox| %>
+      <%= cbox.label(class: "checkbox-inline") { cbox.check_box(class: "checkbox") + cbox.text } %>
+      <% end %>
+
+    </div>
+-->
+  <br>
+    <%= f.submit(@post.new_record? ? 'Create Post' : 'Update Post', class: 'btn btn-primary') %>
+  <% end %>
+</div>

@@ -1,0 +1,7 @@
+<div class="col-md-7 well">
+  <p><%= comment.content%></p>
+  <p><small><%= comment.created_at.strftime("%b %d, %Y")%> by 
+  <% if comment.user != nil %>
+    <%= comment.user[:nickname] %></small></p>
+  <% end %>
+</div>

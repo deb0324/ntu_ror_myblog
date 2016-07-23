@@ -1,0 +1,27 @@
+<%= render 'shared/title', title: "●ω●" %>
+
+<div>
+  <span class="btn btn-primary">
+  <%= link_to 'new post', new_post_path, { :style=>'color: white; font-size: 16px', :class => "css_class"} %>
+  </span>
+
+  <span class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort By
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Most Recent</a></li>
+      <li><a href="#">Most Comments</a></li>
+      <li><a href="#">Most Tags???</a></li>
+    </ul>
+  </span>
+</div>
+
+<div>
+<br> <!-- TODO: Fix this, add proper padding -->
+</div>
+
+<div>
+<% @posts.reverse.each do |post| %>
+  <%= render 'post', post: post, show: false %>
+<% end %>
+</div>
