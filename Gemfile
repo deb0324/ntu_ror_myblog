@@ -31,7 +31,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'dynamic_form'
 
 # for image uploading
+gem 'rmagick'
 gem 'carrierwave'
+
 
 
 # Use Unicorn as the app server
