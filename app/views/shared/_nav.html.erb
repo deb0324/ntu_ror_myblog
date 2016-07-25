@@ -2,9 +2,9 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <% if current_user %>
-      <a class="navbar-brand"> (｡･∀･)ﾉﾞ <%= current_user.nickname %> </a>
+      <a class="navbar-brand" href="/" > (｡･∀･)ﾉﾞ <%= current_user.nickname %> </a>
       <% else %>
-      <a class="navbar-brand"> (｡･∀･)ﾉﾞ </a>
+      <a class="navbar-brand" href="/"> (｡･∀･)ﾉﾞ </a>
       <% end %>
     </div>
     <ul class="nav navbar-nav">

@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
     redirect_to login_path unless current_user.author?(params[:id])
   end
 
+  def require_admin
+    redirect_to login_path unless current_user.admin?
+  end
+
 end

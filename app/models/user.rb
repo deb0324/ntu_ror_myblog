@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
     self == Post.find(id).user
   end
 
+  def admin?
+    self.role == "admin"
+  end
+
   validates :username, :nickname, :password, presence: true
   validates :username, :nickname, length: { minimum: 1 }
   validates :username, :nickname, length: { maximum: 20 }
