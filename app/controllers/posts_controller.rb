@@ -17,8 +17,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.create(title: params[:title], content: params[:content])
-    post.user = current_user
+    @post = Post.create(title: params[:title], content: params[:content])
+    @post.user = current_user
 
     # Category logic
     all_cat = Category.all.pluck(:title)
@@ -31,16 +31,16 @@ class PostsController < ApplicationController
 
     # existing categories
     (all_cat & user_cat).each do |cat|
-      post.categories << Category.find_by_title(cat)
+      @post.categories << Category.find_by_title(cat)
     end
 
     # new categories
     (user_cat - all_cat).each do |cat|
-      post.categories << Category.create(title: cat)
+      @post.categories << Category.create(title: cat)
     end
     ##
     
-    if post.save!
+    if @post.save
       redirect_to posts_path
     else
       render :new

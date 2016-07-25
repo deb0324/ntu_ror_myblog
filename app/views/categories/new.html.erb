@@ -1,8 +1,8 @@
 <%= render 'shared/title', title: 'New Category'%>
 
-<div class="well col-md-12" role="form" style="width: 400px;">
+<div class="well col-md-12" role="form" style="width: 700px;">
   <%= form_for @category do |f| %>
-
+    <%= render 'shared/form_errors', object: @category %>
     <div class="form-group">
       <label>Category Name</label>
       <p><%= f.text_field :title, :placeholder => "name", class: "form-control" %></p>

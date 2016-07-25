@@ -1,6 +1,10 @@
 <%= render 'shared/title', title: 'Sign up'%>
-<div role="form" style="width: 700px;">
-  <%= form_for(@user) do |f| %>
+
+<div class="well col-md-12" role="form" style="width: 700px;">
+
+  <%= form_for @user do |f| %>
+
+    <%= render 'shared/form_errors', object: @user %>
     <div class="form-group">
       <label>Username</label>
       <p><%= f.text_field :username, :placeholder => "username", class: "form-control" %></p>

@@ -1,52 +1,33 @@
-<html>
-<head>
-  <title>test</title>
-  <meta charset="utf-8">
-  <style>
-    .nav {
-      height: 50px;
-      background: #383838;
-    }
-
-    .nav-list {
-      list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-    }
-
-    .nav-item {
-      float: left;
-      display: block;
-      padding: 16px;
-      width: 150px;
-      border-right: 1px solid white;
-      text-align: center;
-    }
-
-    
-    .nav-item:hover {
-      background: #707070;
-    }
-  </style>
-</head>
-<body>
-   <div class="nav">
-    <ul class="nav-list">
-
-      <li class="nav-item" style="color: red;">Home</li>
-
-      <li class="nav-item"><%= link_to 'Posts', posts_path, {:style=>'color: white;'}  %></li>
-
-      <li class="nav-item"><%= link_to 'Categories', categories_path, {:style=>'color: white;'} %></li>
-    
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
       <% if current_user %>
-        <li class="nav-item" style="border-right: none; float:right;"><%= link_to 'Sign out', logout_path, {:style=>'color: white;'} %></li>
+      <a class="navbar-brand"> (｡･∀･)ﾉﾞ <%= current_user.nickname %> </a>
       <% else %>
-        <li class="nav-item" style="border-right: none; float:right;"><%= link_to 'Sign in', new_session_path, {:style=>'color: white;'} %>
+      <a class="navbar-brand"> (｡･∀･)ﾉﾞ </a>
+      <% end %>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><%= link_to 'Posts', posts_path, {:style=>'color: white;'}  %></li> 
+      <li><%= link_to 'Categories', categories_path, {:style=>'color: white;'} %></li> 
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <% if current_user %>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to 'Profile', user_path(current_user.id) %></li>
+          <li><%= link_to 'Sign out', logout_path%></li>
+        </ul>
+      </li>
+
+      <% else %>
+        <li><%= link_to 'Sign in', new_session_path, {:style=>'color: white;'} %></li>
+        <li><%= link_to 'Sign up', new_user_path, {:style=>'color: white;'} %></li>
       <% end %>
     </ul>
   </div>
-  <hr style = "color: grey">
-</body>
-</html>
+</nav>
+<hr>

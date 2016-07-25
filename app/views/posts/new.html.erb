@@ -3,7 +3,8 @@
 <div class="well col-md-12" role="form" style="width: 700px;">
 
   <%= form_tag @post do |f| %>
-    <div class="form-group">
+    <%= render 'shared/form_errors', object: @post %>
+    <div class="form-group ">
       <label>Title</label>
       <%= text_field_tag :title, params[:title], :placeholder => "title", class: "form-control" %>
     </div>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'posts#index'
+
   resources :posts do
     resources :comments
   end
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :categories
   resources :users
+  #resources :users [:new, :create]
 
   # TODO: which one to use??
   resources :sessions

@@ -2,6 +2,6 @@
   <p><%= comment.content%></p>
   <p><small><%= comment.created_at.strftime("%b %d, %Y")%> by 
   <% if comment.user != nil %>
-    <%= comment.user[:nickname] %></small></p>
+    <%= link_to comment.user[:nickname], user_path(comment.user) %></small></p>
   <% end %>
 </div>
