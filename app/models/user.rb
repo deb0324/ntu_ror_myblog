@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
   has_many :galleries
+  mount_uploader :profile_pic, ImageUploader
 
   has_secure_password validations: false
 

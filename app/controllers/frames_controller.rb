@@ -6,6 +6,7 @@ class FramesController < ApplicationController
 
   def new
     @frame = Frame.new
+    @gallery = Gallery.find(params[:gallery_id])
   end
 
   def create
@@ -17,7 +18,7 @@ class FramesController < ApplicationController
     if @frame.save
       redirect_to gallery_path(@gallery)
     else
-      redirect_to gallery_path(@gallery)
+      render :new
     end
   end
 

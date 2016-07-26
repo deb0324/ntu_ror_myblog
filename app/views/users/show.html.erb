@@ -9,6 +9,12 @@
 <br> <!-- TODO: Fix this, add proper padding -->
 </div>
 
+<!-- fix this display
+<div class="well">
+  <%= image_tag @user.profile_pic_url  %>
+</div>
+-->
+
 <div>
   <% @user.posts.reverse.each do |post| %>
     <%= render 'posts/post', post: post, show: false %>

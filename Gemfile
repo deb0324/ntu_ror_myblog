@@ -34,6 +34,8 @@ gem 'dynamic_form'
 gem 'rmagick'
 gem 'carrierwave'
 
+# for links
+gem "rails_autolink"
 
 
 # Use Unicorn as the app server
