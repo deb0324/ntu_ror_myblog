@@ -1,9 +1,11 @@
 <%= render 'shared/title', title: @gallery.title %>
 
 <div>
+  <% if current_user == @gallery.user %>
   <span class="btn btn-primary">
     <%= link_to 'new picture', new_gallery_frame_path(@gallery), { :style=>'color: white; font-size: 16px', :class => "css_class"} %>
   </span>
+  <% end %>
 </div>
 
 <div>
