@@ -1,0 +1,18 @@
+<%= render 'shared/title', title: 'Gallery~'%>
+<div>
+  <span class="btn btn-primary">
+  <%= link_to 'new gallery', new_gallery_path, { :style=>'color: white; font-size: 16px', :class => "css_class"} %>
+  </span>
+</div>
+
+<div>
+<br> <!-- TODO: Fix this, add proper padding -->
+</div>
+
+<% @galleries.each do |gallery| %>
+    <div class="row">
+    <div class="well col-md-6">
+      <h5><%= link_to gallery.title, gallery_path(gallery) %> <span style="float:right;"><%= gallery.frames.size %> pictures</span></h5>
+    </div>
+  </div>
+<% end %>

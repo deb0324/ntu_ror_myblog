@@ -1,0 +1,16 @@
+<%= render 'shared/title', title: 'New Gallery' %>
+
+<div class="well col-md-12" role="form" style="width: 700px;">
+
+  <%= form_for @gallery do |f| %>
+    <%= render 'shared/form_errors', object: @gallery %>
+
+    <div class="form-group">
+      <label>Gallery Name</label>
+      <p><%= f.text_field :title, :placeholder => "name", class: "form-control" %></p>
+    </div>
+
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+
+</div>

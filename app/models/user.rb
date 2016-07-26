@@ -1,11 +1,17 @@
 class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
+  has_many :galleries
+  mount_uploader :profile_pic, ImageUploader
 
   has_secure_password validations: false
 
   def author?(id)
     self == Post.find(id).user
+  end
+
+  def admin?
+    self.role == "admin"
   end
 
   validates :username, :nickname, :password, presence: true

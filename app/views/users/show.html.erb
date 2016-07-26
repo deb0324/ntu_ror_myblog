@@ -1,4 +1,23 @@
 <%= render 'shared/title', title: @user.nickname %>
+<div>
+  <span class="btn btn-primary">
+    <%= link_to 'new gallery', new_gallery_path, { :style=>'color: white; font-size: 16px', :class => "css_class"} %>
+  </span>
+
+  <span class="btn btn-primary">
+    <%= link_to 'show gallery', galleries_path(@user.id), { :style=>'color: white; font-size: 16px', :class => "css_class"} %>
+  </span>
+</div>
+
+<div>
+<br> <!-- TODO: Fix this, add proper padding -->
+</div>
+
+<!-- fix this display
+<div class="well">
+  <%= image_tag @user.profile_pic_url  %>
+</div>
+-->
 
 <div>
   <% @user.posts.reverse.each do |post| %>

@@ -62,7 +62,7 @@ class PostsController < ApplicationController
 
   def destroy
     #delete post
-    @post = Post.find(params[:id]) # TODO: why format? how to get id?
+    @post = Post.find(params[:id])
     @post.destroy
 
     #delete all comments associated with post

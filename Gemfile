@@ -30,6 +30,13 @@ gem 'bcrypt', '~> 3.1.7'
 # for error messages
 gem 'dynamic_form'
 
+# for image uploading
+gem 'rmagick'
+gem 'carrierwave'
+
+# for links
+gem "rails_autolink"
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'
