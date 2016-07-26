@@ -1,7 +1,7 @@
 class GalleriesController < ApplicationController
 
   def index
-    @galleries = current_user.galleries
+    @galleries = User.find(params[:format]).galleries
   end
 
   def show

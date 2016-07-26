@@ -11,9 +11,9 @@
 </div>
 
 <% @gallery.frames.each do |frame| %>
-   <div class="well col-md-6">
+   <div class="well col-md-4">
       <p><h4><u><%= frame.name %></u></h4></p>
-      <%= image_tag frame.image_url(:thumb) if frame.image? %>
+      <p style="width:300px; height:300px;"><%= image_tag frame.image_url(:thumb) if frame.image? %></p>
     </div>
 <% end %>
 
