@@ -5,6 +5,9 @@ class PostsController < ApplicationController
   before_action :require_author, only:[:edit, :update, :destroy]
   def index
     @posts = Post.all
+
+    #posts = Post.all.joins(:comments).group("posts.id").order("count(comments.id) desc NULL LAST")
+    #@posts = Post.all.joins(:comments).order("count(comments.id) desc")
   end
 
   def show
@@ -17,6 +20,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    #@post = Post.create(post_params)
     @post = Post.create(title: params[:title], content: params[:content])
     @post.user = current_user
 
