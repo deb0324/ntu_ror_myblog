@@ -9,10 +9,13 @@
     <%= link_to vote_post_comment_path(post, comment, vote: true), class: "btn btn-warning", method: 'post' do %>Like
     <% end %>
     <span class="btn">
-      <%= comment.total_votes %> Votes  
+      <%= comment.up_votes %> Likes  
     </span> 
     <%= link_to vote_post_comment_path(post, comment, vote: false), class: "btn btn-warning", method: 'post' do %>Dislike 
     <% end %>
+    <span class="btn">
+      <%= comment.down_votes %> Dislikes  
+    </span> 
 
   </p>
 </div>
