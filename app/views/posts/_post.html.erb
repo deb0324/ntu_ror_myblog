@@ -33,12 +33,15 @@
        <p>
           <%= link_to vote_post_path(post, vote: true), remote: true, class: "btn btn-warning", method: 'post' do %>Like
           <% end %>
-          <span class="btn" id="<%= post.id %>_count">
-            <%= post.total_votes %> Votes  
+          <span class="btn" id="<%= post.id %>_likeCount">
+            <%= post.up_votes %> Likes  
           </span> 
           <%= link_to vote_post_path(post, vote: false), remote: true, class: "btn btn-warning", method: 'post' do %>Dislike 
           <% end %>
-          <span id="<%= post.id %>_message"></span>
+          <span class="btn" id="<%= post.id %>_dislikeCount">
+            <%= post.down_votes %> Dislikes  
+          </span> 
+          <p><span id="<%= post.id %>_message"></span></p>
             
         </p>
         
