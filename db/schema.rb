@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726051433) do
+ActiveRecord::Schema.define(version: 20160730060216) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -64,7 +64,15 @@ ActiveRecord::Schema.define(version: 20160726051433) do
     t.string   "password_digest"
     t.string   "nickname"
     t.string   "role"
-    t.string   "profile_pic"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.boolean  "vote"
+    t.integer  "user_id"
+    t.string   "votable_type"
+    t.integer  "votable_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end

@@ -17,13 +17,31 @@
     </p>
     <span>
       <% if show %>
-        <% if current_user && current_user.author?(post.id) %>
-          <%= link_to "Edit Post", edit_post_path(post.id) %> 
-          <%= link_to "Delete Post", post_path(post),:confirm => 'Are you sure?', :method => :delete %> 
+        <% if current_user %>
+          <% if current_user.author?(post.id) || current_user.admin? %>
+            <%= link_to "Edit Post", edit_post_path(post.id) %> 
+            <%= link_to "Delete Post", post_path(post), :method => :delete %> 
+
+          <% end %>
         <% end %>
       <% else %>
-      <%= link_to "show post", post_path(post) %>
+        <%= link_to "show post", post_path(post) %>
       <% end %>
+
+
+
+       <p>
+          <%= link_to vote_post_path(post, vote: true), class: "btn btn-warning", method: 'post' do %>Like
+          <% end %>
+          <span class="btn">
+            <%= post.total_votes %> Votes  
+          </span> 
+          <%= link_to vote_post_path(post, vote: false), class: "btn btn-warning", method: 'post' do %>Dislike 
+          <% end %>
+            
+        </p>
+        
+      
     </span>
   </div>
 </div>

@@ -21,6 +21,19 @@ Rails.application.routes.draw do
   resources :galleries do
     resources :frames
   end
+
+  resources :posts, except: [:destroy] do
+    member do 
+      post :vote
+    end
+  
+
+    resources :comments, only: [:create, :show] do
+      member do 
+        post :vote
+      end
+    end
+  end
   #get '/delete' => 'posts#destroy'
 
   #get '/index' => 'posts#index'

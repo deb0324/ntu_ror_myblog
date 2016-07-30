@@ -1,8 +1,21 @@
 class PostsController < ApplicationController
 
-  #before_action :require_user, only:[:new, :create, :edit, :update, :destroy]
-  before_action :require_user, only:[:new, :create]
-  before_action :require_author, only:[:edit, :update, :destroy]
+  before_action :require_user, only:[:new, :create, :vote]
+  before_action :require_permission, only:[:edit, :update, :destroy]
+
+  def vote
+    @post = Post.find(params[:id])
+    @vote = Vote.create(votable: @post, creator: current_user, vote: params[:vote])
+
+    if @vote.valid?
+      flash[:success] = 'Your vote was counted'
+    else
+      flash[:error] = "You can only vote once >:("
+    end
+
+    redirect_to :back
+  end
+
   def index
     @posts = Post.all
 

@@ -4,7 +4,7 @@
 </div>
 <div>
   <% @post.comments.each do |comment|%>
-    <%= render 'comments/comment', comment: comment %>
+    <%= render 'comments/comment', comment: comment, post: @post %>
   <% end %>
 </div>
 
