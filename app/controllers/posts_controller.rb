@@ -8,19 +8,28 @@ class PostsController < ApplicationController
     @vote = Vote.create(votable: @post, creator: current_user, vote: params[:vote])
 
     if @vote.valid?
-      flash[:success] = 'Your vote was counted'
+      flash[:success] = 'Your vote was counted (๑•̀ㅂ•́)و✧'
     else
-      flash[:error] = "You can only vote once >:("
+      flash[:error] = "You can only vote once (๑•̀ㅂ•́)و✧"
     end
 
     redirect_to :back
   end
 
   def index
-    @posts = Post.all
-
-    #posts = Post.all.joins(:comments).group("posts.id").order("count(comments.id) desc NULL LAST")
-    #@posts = Post.all.joins(:comments).order("count(comments.id) desc")
+    
+    case params[:type]
+    when "recent"
+      @posts = Post.all.order(:updated_at).reverse
+    when "vote"
+      @posts = Post.all.sort_by{|x| x.total_votes}.reverse
+    when "comment"
+      @posts = Post.all.sort_by{|x| x.total_comments}.reverse
+    when "tag"
+      @posts = Post.all.sort_by{|x| x.total_tags}.reverse 
+    else
+      @posts = Post.all.reverse
+    end
   end
 
   def show

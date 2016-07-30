@@ -9,9 +9,10 @@
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort By
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <li><a href="#">Most Recent</a></li>
-      <li><a href="#">Most Comments</a></li>
-      <li><a href="#">Most Tags???</a></li>
+      <li><%= link_to 'Most Recent', posts_path(type: "recent") %></li>
+      <li><%= link_to 'Most Comments', posts_path(type: "comment") %></li>
+      <li><%= link_to 'Most Tags', posts_path(type: "tag") %></li>
+      <li><%= link_to 'Most Votes', posts_path(type: "vote") %></li>
     </ul>
   </span>
 </div>
@@ -21,7 +22,7 @@
 </div>
 
 <div>
-<% @posts.reverse.each do |post| %>
+<% @posts.each do |post| %>
   <%= render 'post', post: post, show: false %>
 <% end %>
 </div>

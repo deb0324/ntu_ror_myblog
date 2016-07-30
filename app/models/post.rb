@@ -21,4 +21,12 @@ class Post < ActiveRecord::Base
   def total_votes
     up_votes - down_votes
   end
+
+  def total_comments
+    self.comments.length
+  end
+
+  def total_tags
+    self.categories.length
+  end
 end
