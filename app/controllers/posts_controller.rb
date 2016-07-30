@@ -7,14 +7,12 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @vote = Vote.create(votable: @post, creator: current_user, vote: params[:vote])
 
-    if @vote.valid?
-      flash[:success] = 'Your vote was counted (๑•̀ㅂ•́)و✧'
-    else
-      flash[:error] = "You can only vote once (๑•̀ㅂ•́)و✧"
+    respond_to do |format|
+      format.html { redirect_to :back } 
+      format.js
     end
-
-    redirect_to :back
   end
+
 
   def index
     

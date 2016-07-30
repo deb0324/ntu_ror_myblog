@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
     end
 
     redirect_to :back
+    
   end
 
   def create

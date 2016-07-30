@@ -1,0 +1,6 @@
+$('#<%= @post.id %>_count').html("<%= @post.total_votes %> Votes");
+<% if @vote.errors.messages.any? %>
+  $('#<%= @post.id %>_message').html("You can only vote once (๑•̀ㅂ•́)و✧");
+<% else %>
+  $('#<%= @post.id %>_message').html("Your vote was counted (๑•̀ㅂ•́)و✧");
+<% end %>
