@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     @vote = Vote.create(votable: @post, creator: current_user, vote: params[:vote])
 
     respond_to do |format|
-      format.html { redirect_to :back } 
+      #format.html { redirect_to :back } 
       format.js
     end
   end
