@@ -1,0 +1,8 @@
+$('#<%= @comment.id %>_likeCount').html("<%= @comment.up_votes %> Likes");
+$('#<%= @comment.id %>_dislikeCount').html("<%= @comment.down_votes %> Dislikes");
+
+<% if @vote.errors.messages.any? %>
+  $('#<%= @comment.id %>_message').html("You can only vote once (๑•̀ㅂ•́)و✧");
+<% else %>
+  $('#<%= @comment.id %>_message').html("Your vote was counted (๑•̀ㅂ•́)و✧");
+<% end %>
